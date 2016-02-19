@@ -15,12 +15,6 @@ except ImportError:
 
 
 class BaseClient(object):
-    client_class = NotImplementedError
-
-    @property
-    def client_mapping(self, *args, **kwargs):
-        raise NotImplementedError()
-
     def timing(self, *args, **kwargs):
         return getattr(self.client, self.TIMING)(*args, **kwargs)
 
@@ -50,8 +44,6 @@ class TestStatsdClient(BaseClient):
 
 
 class PyStatsdClient(BaseClient):
-    client_class = pystatsd_Client
-
     TIMING = 'timing'
     UPDATE_STAT = 'update_stat'
     GAUGE = 'gauge'
