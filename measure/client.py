@@ -7,11 +7,11 @@ from os import environ
 try:
     from pystatsd import Client as pystatsd_Client
 except ImportError:
-    pystatsd_Client = NotImplementedError
+    pystatsd_Client = NotImplementedError('pystatsd library not found')
 try:
     import boto3
 except ImportError:
-    boto3_Client = NotImplementedError
+    boto3_Client = NotImplementedError('boto3 library not found')
 
 
 class BaseClient(object):
